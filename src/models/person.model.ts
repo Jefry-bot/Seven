@@ -3,13 +3,13 @@ import { sequelize } from "../database";
 import { Pet } from "./pet.model";
 
 class Person extends Model {
-  declare id: number
-  declare name: string
-  declare lastname: string
-  declare email: string
-  declare cellphone: string 
-  declare age: number
-  declare status: boolean
+  declare id: number;
+  declare name: string;
+  declare lastname: string;
+  declare email: string;
+  declare cellphone: string;
+  declare age: number;
+  declare status: boolean;
 }
 
 Person.init(
@@ -36,22 +36,22 @@ Person.init(
     },
     status: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true
+      defaultValue: true,
     },
   },
   {
-    sequelize
+    sequelize,
   }
 );
 
 Person.hasMany(Pet, {
-  foreignKey: 'person_id',
-  sourceKey: 'id'
-})
+  foreignKey: "person_id",
+  sourceKey: "id",
+});
 
 Pet.belongsTo(Person, {
-  foreignKey: 'person_id',
-  targetKey: 'id'
-})
+  foreignKey: "person_id",
+  targetKey: "id",
+});
 
-export { Person }
+export { Person };

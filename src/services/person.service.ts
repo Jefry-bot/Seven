@@ -35,7 +35,7 @@ export class PersonService {
   async update(id: number, person: PersonType) {
     return this.findById(id).then((personData) => {
       if (personData) {
-        personData.set(person)
+        personData.set(person);
         personData.save();
         return personData;
       }

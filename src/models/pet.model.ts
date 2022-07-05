@@ -11,7 +11,7 @@ export const Pet = sequelize.define(
     },
     status: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true
+      defaultValue: true,
     },
     name: {
       type: DataTypes.STRING,

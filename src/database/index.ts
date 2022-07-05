@@ -12,4 +12,4 @@ if (!process.env.APP_PRODUCTION) {
   });
 }
 
-export { sequelize }
+export { sequelize };
