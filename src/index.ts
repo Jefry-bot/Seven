@@ -1,12 +1,11 @@
 import { app } from "./app";
-import { sequelize } from "./database";
+import 'colors'
 
 const main = async () => {
   try {
-    await sequelize.sync({force: false})
-
     app.listen(process.env.APP_PORT, () => {
-      console.log(`Servidor running at port ${process.env.APP_PORT}`);
+      console.clear()
+      console.log(`Servidor running at port ${process.env.APP_PORT}`.green);
     });
   } catch (error) {
     console.log("Error " + error)

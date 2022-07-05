@@ -35,17 +35,11 @@ export class PersonService {
   async update(id: number, person: PersonType) {
     return this.findById(id).then((personData) => {
       if (personData) {
-        (personData.name = person.name),
-          (personData.lastname = person.lastname),
-          (personData.email = person.email),
-          (personData.cellphone = person.cellphone),
-          (personData.age = person.age);
-
+        personData.set(person)
         personData.save();
-
         return personData;
       }
-      return {}
+      return {};
     });
   }
 }
