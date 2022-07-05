@@ -1,8 +1,16 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../database";
 
-export const Pet = sequelize.define(
-  "pets",
+class Pet extends Model {
+  declare id: number;
+  declare name: string;
+  declare race: string;
+  declare age: number;
+  declare status: boolean;
+  declare personId: number
+}
+
+Pet.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -24,7 +32,8 @@ export const Pet = sequelize.define(
     },
   },
   {
-    timestamps: true,
-    tableName: "PETS",
+    sequelize,
   }
 );
+
+export { Pet };

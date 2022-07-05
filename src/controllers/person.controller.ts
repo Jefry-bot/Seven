@@ -4,23 +4,25 @@ import { PersonService } from "../services/person.service";
 
 const service = new PersonService();
 
-export const findAll = (_: Request, res: Response) => {
+export const findAll = (_: Request, res: Response): void => {  
   service.findAll().then((persons) => {
-    res.json(builder.success(persons));
+    res.json(builder.success(persons.map((person, pets) => {
+        return {person: person, pets: pets};
+    })));
   });
 };
 
-export const save = (req: Request, res: Response) => {
+export const save = (req: Request, res: Response): void => {
   service.save(req.body).then((person) => res.json(builder.success(person)));
 };
 
-export const findById = (req: Request, res: Response) => {
+export const findById = (req: Request, res: Response): void => {
   service
     .findById(+req.params.id)
     .then((person) => res.json(builder.success(person)));
 };
 
-export const deleteById = (req: Request, res: Response) => {
+export const deleteById = (req: Request, res: Response): void => {
   service.deleteById(+req.params.id);
   res.json(builder.success(null));
 };
