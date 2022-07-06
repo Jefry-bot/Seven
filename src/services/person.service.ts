@@ -1,9 +1,12 @@
 import { Person } from "../models/person.model";
+import { Pet } from "../models/pet.model";
 import { PersonType } from "../types/person";
 
 export class PersonService {
   async findAll() {
-    const persons: Array<Person> = await Person.findAll();
+    const persons: Array<Person> = await Person.findAll({
+      include: Pet
+    });
     return persons;
   }
 

@@ -6,9 +6,7 @@ const service = new PersonService();
 
 export const findAll = (_: Request, res: Response): void => {  
   service.findAll().then((persons) => {
-    res.json(builder.success(persons.map((person, pets) => {
-        return {person: person, pets: pets};
-    })));
+    res.json(builder.success(persons));
   });
 };
 
