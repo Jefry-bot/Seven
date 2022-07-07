@@ -7,6 +7,6 @@ const app = exprees();
 
 app.use(exprees.json());
 app.use("/api/persons", routerPerson);
-app.use("/api/tasks", routerPet);
+app.use("/api/pets", routerPet);
 
 export { app };

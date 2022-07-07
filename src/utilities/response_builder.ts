@@ -1,6 +1,6 @@
 import { Response } from "../types/response";
 
-export const success = <T>(object: T): Response<T> => {
+const success = <T>(object: T): Response<T> => {
   const response: Response<T> = {
     data: object,
     message: "Process successfull on server",
@@ -12,3 +12,17 @@ export const success = <T>(object: T): Response<T> => {
 
   return response;
 };
+
+const failed = <T extends Error>(object: T): Response<T> => {
+  const response: Response<T> = {
+    data: object,
+    message: object.message,
+    status: {
+      code: 500,
+      message: "Fatal error in server",
+    },
+  };
+
+  return response;
+}
+export { success, failed };

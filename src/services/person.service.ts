@@ -4,15 +4,24 @@ import { PersonType } from "../types/person";
 
 export class PersonService {
   async findAll() {
-    const persons: Array<Person> = await Person.findAll({
-      include: Pet
-    });
-    return persons;
+    try {
+      const persons: Array<Person> = await Person.findAll({
+        include: Pet,
+      });
+      return persons;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async findById(id: number) {
-    const person: Person | null = await Person.findByPk(id);
-    return person;
+    try {
+      const person: Person | null = await Person.findByPk(id);
+      if (!person) throw new Error();
+      return person;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async save(person: PersonType) {
